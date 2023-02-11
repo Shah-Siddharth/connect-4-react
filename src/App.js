@@ -1,14 +1,37 @@
-import React from "react";
 import GameCircle from "./components/GameCircle";
 
 function App() {
   return (
     <div>
-      <GameCircle id="1">
+      <GameCircle id="1" color="red">
       Red
       </GameCircle>
 
-      <GameCircle id="2">
+      <GameCircle id="2" color="blue">
+      Blue
+      </GameCircle>
+
+      <GameCircle id="1" color="red">
+      Red
+      </GameCircle>
+
+      <GameCircle id="2" color="blue">
+      Blue
+      </GameCircle>
+
+      <GameCircle id="1" color="red">
+      Red
+      </GameCircle>
+
+      <GameCircle id="2" color="blue">
+      Blue
+      </GameCircle>
+
+      <GameCircle id="1" color="red">
+      Red
+      </GameCircle>
+
+      <GameCircle id="2" color="blue">
       Blue
       </GameCircle>
     </div>

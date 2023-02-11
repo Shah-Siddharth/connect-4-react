@@ -1,12 +1,10 @@
-import React from "react";
-
 function onClick(id) {
     alert("click " + id);
 }
 
-function GameCircle({id, children}) {
+function GameCircle({id, color, children}) {
     return(
-        <div onClick={() => onClick(id)}>
+        <div style={{ backgroundColor: color }} onClick={() => onClick(id)}>
             {children}
         </div>
     )
