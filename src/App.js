@@ -1,9 +1,21 @@
+import { useState } from "react";
 import GameCircle from "./components/GameCircle";
+
+const NO_PLAYER = 0
+const PLAYER_1 = 1
+const PLAYER_2 = 2
 
 function App() {
 
+  const [gameBoard, setGameBoard] = useState(Array(16).fill(NO_PLAYER));
+  const [currentPlayer, setCurrentPlayer] = useState(PLAYER_1);
+
   const gameCircleClicked = (id) => {
-    console.log("circle clicked", id);
+    
+    gameBoard[id] = currentPlayer;
+    
+    setGameBoard(gameBoard);
+    setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
   }
 
   return (
