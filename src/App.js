@@ -1,9 +1,14 @@
 import GameCircle from "./components/GameCircle";
 
 function App() {
+
+  const gameCircleClicked = (id) => {
+    console.log("circle clicked", id);
+  }
+
   return (
     <div className="gameBoard">
-      <GameCircle id={1}>
+      <GameCircle id={1} onCircleClicked={gameCircleClicked}>
       </GameCircle>
 
       <GameCircle id={2}>

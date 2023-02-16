@@ -1,10 +1,6 @@
-function onClick(id) {
-    alert("click " + id);
-}
-
-function GameCircle({id}) {
+function GameCircle({id, onCircleClicked}) {
     return(
-        <div className={`gameCircle ${id%2 == 0 ? "even" : "odd"}`} onClick={() => onClick(id)}>
+        <div className={`gameCircle ${id%2 === 0 ? "even" : "odd"}`} onClick={() => onCircleClicked(id)}>
         </div>
     )
 }
