@@ -1,6 +1,6 @@
-function GameCircle({id, onCircleClicked}) {
+function GameCircle({id, className, onCircleClicked}) {
     return(
-        <div className={`gameCircle ${id%2 === 0 ? "even" : "odd"}`} onClick={() => onCircleClicked(id)}>
+        <div className={`gameCircle ${className}`} onClick={() => onCircleClicked(id)}>
         </div>
     )
 }

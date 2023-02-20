@@ -13,12 +13,13 @@
   height: 100px;
   margin: 15px;
   border-radius: 50%;
+  border: 3px solid black;
 }
 
-.odd {
+.player-1 {
   background-color: red;
 }
 
-.even {
+.player-2 {
   background-color: blue;
 }
