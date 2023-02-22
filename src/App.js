@@ -1,5 +1,7 @@
 import { useState } from "react";
 import GameCircle from "./components/GameCircle";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const NO_PLAYER = 0;
 const PLAYER_1 = 1;
@@ -38,9 +40,15 @@ function App() {
   }
 
   return (
-    <div className="gameBoard">
+    <div className="app-wrapper">
+      <Header player={currentPlayer} />
+
+      <div className="gameBoard">
       {renderGameCircles()}
-    </div>
+      </div>
+
+      <Footer />
+    </div>    
   );
 }
 
