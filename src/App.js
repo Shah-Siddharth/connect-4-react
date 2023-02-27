@@ -2,6 +2,7 @@ import { useState } from "react";
 import GameCircle from "./components/GameCircle";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { checkWinner } from "./utils/helper";
 
 const NO_PLAYER = 0;
 const PLAYER_1 = 1;
@@ -30,6 +31,10 @@ function App() {
   }
 
   const gameCircleClicked = (id) => {
+    if (checkWinner(gameBoard, id, currentPlayer)) {
+      console.log("win!");
+    }
+    
     let newGameBoard = gameBoard.map((elem, idx) => {
       if (idx === id) return currentPlayer;
       return elem;
