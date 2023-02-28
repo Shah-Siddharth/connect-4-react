@@ -8,6 +8,8 @@ function Header({gameState, currentPlayer, gameWinner}) {
                 return `Player ${currentPlayer}'s Turn`;
             case constants.GAME_STATE_WIN:
                 return `Player ${gameWinner} Wins!`;
+            case constants.GAME_STATE_DRAW:
+                return "It's a Draw!";
             default:
                 break;
         }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import GameCircle from "./components/GameCircle";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { checkWinner } from "./utils/helper";
+import { checkDraw, checkWinner } from "./utils/helper";
 import * as constants from "./utils/constants";
 
 function App() {
@@ -29,9 +29,17 @@ function App() {
   }
 
   const gameCircleClicked = (id) => {
+
+    if (gameBoard[id] !== constants.NO_PLAYER) return;
+    if (gameState !== constants.GAME_STATE_PLAYING) return;
+
     if (checkWinner(gameBoard, id, currentPlayer)) {
       setGameState(constants.GAME_STATE_WIN);
       setGameWinner(currentPlayer);
+
+    } else if (checkDraw(gameBoard, id, currentPlayer)) {
+      setGameState(constants.GAME_STATE_DRAW);
+      setGameWinner(constants.NO_PLAYER);
     }
     
     let newGameBoard = gameBoard.map((elem, idx) => {
