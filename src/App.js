@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GameCircle from "./components/GameCircle";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -7,10 +7,19 @@ import * as constants from "./utils/constants";
 
 function App() {
 
-  const [gameBoard, setGameBoard] = useState(Array(16).fill(constants.NO_PLAYER));
+  const [gameBoard, setGameBoard] = useState(Array(constants.NO_OF_CIRCLES).fill(constants.NO_PLAYER));
   const [currentPlayer, setCurrentPlayer] = useState(constants.PLAYER_1);
   const [gameWinner, setGameWinner] = useState(constants.NO_PLAYER);
   const [gameState, setGameState] = useState(constants.GAME_STATE_PLAYING);
+
+  useEffect(() => {
+    initGame();
+  }, []);
+
+  const initGame = () => {
+    setGameBoard(Array(constants.NO_OF_CIRCLES).fill(constants.NO_PLAYER));
+    setCurrentPlayer(constants.NO_PLAYER);
+  }
 
   const renderGameCircles = () => {
     const circles = [];
@@ -59,7 +68,7 @@ function App() {
       {renderGameCircles()}
       </div>
 
-      <Footer />
+      <Footer buttonOnClick={initGame} />
     </div>    
   );
 }
