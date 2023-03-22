@@ -18,7 +18,9 @@ function App() {
 
   const initGame = () => {
     setGameBoard(Array(constants.NO_OF_CIRCLES).fill(constants.NO_PLAYER));
-    setCurrentPlayer(constants.NO_PLAYER);
+    setCurrentPlayer(constants.PLAYER_1);
+    setGameWinner(constants.NO_PLAYER);
+    setGameState(constants.GAME_STATE_PLAYING);
   }
 
   const renderGameCircles = () => {

@@ -44,3 +44,80 @@ export function checkDraw(gameBoard, currentMove, currentPlayer) {
 
     return emptyCircles === 0;
 }
+
+
+function getRandomComputerMove(gameBoard) {
+    let validMoves = [];
+    for (let i=0; i<gameBoard.length; i++) {
+        if (gameBoard[i] === 0) {
+            validMoves.push(i);
+        }
+    }
+
+    let randomMove = Math.floor( Math.random() * validMoves.length );
+    return validMoves[randomMove];
+}
+
+
+export function getComputerMove(gameBoard) {
+    
+    let winningCombinationChecks = [
+        {
+            indexes: [0, 4, 8, 12],
+            step: 1,
+            count: 4
+        },
+        {
+            //for rows
+            indexes: [0, 1, 2, 3],
+            step: 1,
+            count: 4
+        },
+        {
+            //for diagonals
+            indexes: [0, 5, 10, 15],
+            step: 0,
+            count: 1
+        },
+        {
+            indexes: [3, 6, 9, 12],
+            step: 0,
+            count: 1
+        }
+    ];
+
+    for (let check of winningCombinationChecks) {
+        let firstPos = check.indexes[0];
+        for (let i=0; i<check.count; i++) {
+            let combination = gameBoard[firstPos + check.indexes[0]].toString()
+                            + gameBoard[firstPos + check.indexes[1]].toString()
+                            + gameBoard[firstPos + check.indexes[2]].toString()
+                            + gameBoard[firstPos + check.indexes[3]].toString();
+            
+            switch (combination) {
+                case "1110":
+                case "2220":
+                    return firstPos + check.indexes[3];
+                
+                case "1101":
+                case "2202":
+                    return firstPos + check.indexes[2];
+                
+                case "1011":
+                case "2022":
+                    return firstPos + check.indexes[1];
+                
+                case "0111":
+                case "0222":
+                    return firstPos + check.indexes[0];
+                
+                default:
+                    break;
+            }
+
+            firstPos += check.step;
+        }
+    }
+
+    return getRandomComputerMove(gameBoard);
+}
