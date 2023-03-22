@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import GameCircle from "./components/GameCircle";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { checkDraw, checkWinner } from "./utils/helper";
+import { checkDraw, checkWinner, getComputerMove } from "./utils/helper";
 import * as constants from "./utils/constants";
 
 function App() {
@@ -62,6 +62,12 @@ function App() {
     setCurrentPlayer(currentPlayer === constants.PLAYER_1 ? constants.PLAYER_2 : constants.PLAYER_1);
   }
 
+
+  const suggestMove = () => {
+    gameCircleClicked(getComputerMove(gameBoard));
+  }
+
+
   return (
     <div className="app-wrapper">
       <Header gameState={gameState} currentPlayer={currentPlayer} gameWinner={gameWinner} />
@@ -70,7 +76,7 @@ function App() {
       {renderGameCircles()}
       </div>
 
-      <Footer buttonOnClick={initGame} />
+      <Footer newGameClick={initGame} suggestMoveClick={suggestMove} />
     </div>    
   );
 }
