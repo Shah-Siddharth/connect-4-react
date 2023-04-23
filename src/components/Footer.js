@@ -1,8 +1,18 @@
-function Footer({suggestMoveClick, newGameClick}) {
+import * as constants from "../utils/constants";
+
+function Footer({suggestMoveClick, newGameClick, gameState}) {
+
+    const renderButtons = (gameState) => {
+        if (gameState === constants.GAME_STATE_PLAYING) {
+            return(<button className="footer-button" onClick={suggestMoveClick}>Suggest</button>);
+        } else {
+            return(<button className="footer-button" onClick={newGameClick}>New Game</button>);
+        }
+    }
+
     return(
         <div className="game-footer">
-            <button className="footer-button" onClick={newGameClick}>New Game</button>
-            <button className="footer-button" onClick={suggestMoveClick}>Suggest</button>
+            { renderButtons(gameState) }
         </div>
     )
 }

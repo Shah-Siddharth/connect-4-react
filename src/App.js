@@ -76,7 +76,7 @@ function App() {
       {renderGameCircles()}
       </div>
 
-      <Footer newGameClick={initGame} suggestMoveClick={suggestMove} />
+      <Footer newGameClick={initGame} suggestMoveClick={suggestMove} gameState={gameState} />
     </div>    
   );
 }
