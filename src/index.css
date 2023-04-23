@@ -6,6 +6,8 @@
 
 html, body {
   height: 100%;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #root {
@@ -72,6 +74,8 @@ html, body {
 }
 
 .footer-button {
+  font-family: inherit;
+  font-weight: inherit;
   width: 40%;
   height: 60%;
   background-color: #add8e6;
