@@ -87,3 +87,7 @@ html, body {
 .footer-button:hover {
   background-color: #d2691e;
 }
+
+.footer-button, .gameCircle {
+  cursor: pointer;
+}
